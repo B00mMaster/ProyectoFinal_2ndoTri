@@ -5,9 +5,15 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public float speed = 20f;
-    public float turnSpeed = 10f;
-    public float horizontalInput;
-    public float verticalInput;
+    public float rotSpeed = 10f;
+    public float horizontalInput, verticalInput;
+    private Animator animator;
+
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 
 
@@ -18,6 +24,12 @@ public class PlayerControl : MonoBehaviour
 
         transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
 
-        transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
+        transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime * horizontalInput);
+
+        animator.SetFloat("VelX", horizontalInput);
+        animator.SetFloat("VelY", verticalInput);
+
+      
+
     }
 }
