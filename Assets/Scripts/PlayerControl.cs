@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float vidas =10f;
+    
     public float speed = 20f;
     public float rotSpeed = 10f;
     public float horizontalInput, verticalInput;
    
-    public bool ataque;
-    
-    public Rigidbody rb;
-    public float jump;
-    public Transform groundCheck;
-
     private Animator animator;
    
     private void Start()
@@ -39,6 +33,9 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey("c"))
         {
             animator.Play("infantry_04_attack_A");
+
+
+           
         }
         
     

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LifePlayer : MonoBehaviour
 {
     public int life =10;
+    private int maxLife = 10;
    
     public Image barraVida;
 
@@ -16,14 +17,15 @@ public class LifePlayer : MonoBehaviour
     }
     public void PlusLife(int heal)
     {
-        if (life <= 9)
-        { 
-            life += heal;
+        life += heal;
+        if (life >= maxLife)
+        {
+            life = maxLife;
         } 
     }
     private void Update()
     {
-        barraVida.fillAmount =life;
+        barraVida.fillAmount =(float)life/maxLife;
     }
 
 

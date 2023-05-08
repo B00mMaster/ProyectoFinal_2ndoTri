@@ -9,8 +9,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private Transform player;
 
-    private float visionRange=20f;
-    private float attackRange=10f;
+    private float visionRange=10f;
+    private float attackRange=1f;
 
     private bool playerInVisionRange;
     private bool playerInAttackRange;
@@ -93,9 +93,9 @@ public class EnemyAI : MonoBehaviour
         
         if(canAttack)
         {
-            Rigidbody rb = Instantiate(fireball, spawnPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            /*Rigidbody rb = Instantiate(fireball, spawnPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward*forwardAttackForce, ForceMode.Impulse);
-            rb.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * upAttackForce, ForceMode.Impulse);*/
 
             canAttack = false;
             StartCoroutine(AttackCooldown());
