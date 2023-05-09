@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    private Animator animator;
     private NavMeshAgent _agent; 
 
     [SerializeField] private Transform player;
@@ -70,6 +71,7 @@ public class EnemyAI : MonoBehaviour
     {
        if(Vector3.Distance(transform.position, waypoints[nextPoint].position)<2.5f)
        {
+            
             nextPoint++;
             if(nextPoint==totalWaypoints)
             {
@@ -79,6 +81,7 @@ public class EnemyAI : MonoBehaviour
        }
        
         _agent.SetDestination(waypoints[nextPoint].position);
+        
     }
 
     private void Chase()
