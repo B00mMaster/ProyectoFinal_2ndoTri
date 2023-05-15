@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plane
   - Coin
+  - Dragon
   layers:
   - Default
   - TransparentFX

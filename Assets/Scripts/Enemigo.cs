@@ -49,37 +49,45 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(transform.position, target.transform.position)>1 && !atacando)
+            
+            if (Vector3.Distance(transform.position, target.transform.position)>4 && !atacando)
             {
                 var lookPos = target.transform.position - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
                 ani.SetBool("walk", false);
                
                 ani.SetBool("run", true);
-                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+                transform.Translate(Vector3.forward * 4 * Time.deltaTime);
 
                 ani.SetBool("attack", false);
             }
-            else
+            else 
             {
-                ani.SetBool("walk", false);
-                ani.SetBool("run", false);
+                if (Vector3.Distance(transform.position, target.transform.position) > 1 && !atacando)
+                {
+                    var lookPos = target.transform.position - transform.position;
+                    lookPos.y = 0;
+                    var rotation = Quaternion.LookRotation(lookPos);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
+                    ani.SetBool("walk", false);
 
-                ani.SetBool("attack", true);
-                atacando = true;
+                    ani.SetBool("run", false);
+                    transform.Translate(Vector3.forward * 4 * Time.deltaTime);
+
+                    ani.SetBool("attack", true);
+
+
+
+                }
+
             }
         }
 
         
     }
-    public void Final_Ani()
-    {
-        ani.SetBool("attack", false);
-        atacando = false;
-
-    }
+    
     void Update()
     {
         EnemigoPatruya();

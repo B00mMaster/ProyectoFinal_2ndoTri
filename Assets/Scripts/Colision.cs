@@ -7,7 +7,7 @@ public class Colision : MonoBehaviour
     public int damage;
     public int heal;
 
-     private void OnCollisionEnter(Collision other)
+     private void OnTriggerEnter(Collider other)
      {
         if (other.gameObject.name.Contains("Flower"))
         {//si se detecta un objeto con dicho nombre, se detectará como falso por lo que se dejará de ver
@@ -21,12 +21,20 @@ public class Colision : MonoBehaviour
 
         if (other.gameObject.name.Contains("Player"))
         {
-           // other.GetComponent<LifePlayer>().RestLife(damage);
-           // other.GetComponent<LifePlayer>().PlusLife(heal);
+            
+           other.GetComponent<LifePlayer>().RestLife(damage);
+           other.GetComponent<LifePlayer>().PlusLife(heal);
         }
 
-    
+        if (other.gameObject.name.Contains("Dragon"))
+        {
 
-     }
+            other.GetComponent<LifePlayer>().RestLife(damage);
+            other.GetComponent<LifePlayer>().PlusLife(heal);
+        }
+
+
+
+    }
 }
 
