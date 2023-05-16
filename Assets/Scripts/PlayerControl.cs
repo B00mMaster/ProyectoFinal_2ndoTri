@@ -32,10 +32,9 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKey("c"))
         {
-            animator.Play("infantry_04_attack_A");
+            animator.Play("RightHand@Attack01");
 
 
-           
         }
         
     
