@@ -24,13 +24,15 @@ public class Colision : MonoBehaviour
             
            other.GetComponent<LifePlayer>().RestLife(damage);
            other.GetComponent<LifePlayer>().PlusLife(heal);
+
+
         }
 
         if (other.gameObject.name.Contains("Dragon"))
         {
 
-            other.GetComponent<LifePlayer>().RestLife(damage);
-            other.GetComponent<LifePlayer>().PlusLife(heal);
+            other.GetComponent<LifeEnemy>().RestLife(damage);
+            other.GetComponent<LifeEnemy>().PlusLife(heal);
         }
 
 

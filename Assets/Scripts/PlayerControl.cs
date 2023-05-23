@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    
+
+    public static readonly int attackHash = Animator.StringToHash("Ataque");
+    public static readonly int blendHash = Animator.StringToHash("Blend");
+    public static readonly int velxHash = Animator.StringToHash("VelX");
+    public static readonly int velyHash = Animator.StringToHash("VelY");
+
     public float speed = 20f;
     public float rotSpeed = 10f;
     public float horizontalInput, verticalInput;
@@ -20,6 +25,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -27,17 +33,17 @@ public class PlayerControl : MonoBehaviour
 
         transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime * horizontalInput);
 
-        animator.SetFloat("VelX", horizontalInput);
-        animator.SetFloat("VelY", verticalInput);
-
+        animator.SetFloat(velxHash, horizontalInput);
+        animator.SetFloat(velyHash, verticalInput);
+       
         if (Input.GetKey("c"))
         {
-            animator.Play("RightHand@Attack01");
-
-
+            animator.SetBool(attackHash, true);
         }
-        
-    
+
+
+
+
     }
 
   
