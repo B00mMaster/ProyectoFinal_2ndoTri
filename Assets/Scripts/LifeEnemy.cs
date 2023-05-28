@@ -22,4 +22,12 @@ public class LifeEnemy : MonoBehaviour
             life = maxLife;
         }
     }
+
+    private void Start()
+    {
+        if(life<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

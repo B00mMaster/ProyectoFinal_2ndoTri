@@ -30,7 +30,7 @@ public class Enemigo : MonoBehaviour
                 rutina = Random.Range(0, 2);
                 crono = 0;
             }
-            switch (rutina)
+            switch (rutina) 
             {
                 case 0:
                     ani.SetBool("walk", false);
