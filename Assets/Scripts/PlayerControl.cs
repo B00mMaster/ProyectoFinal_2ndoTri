@@ -12,6 +12,10 @@ public class PlayerControl : MonoBehaviour
 
     Animator ani;
 
+    public AudioSource audioSource1;
+    
+
+
     public float speed = 20f;
     public float rotSpeed = 10f;
     public float horizontalInput, verticalInput;
@@ -21,6 +25,10 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        audioSource1 = GetComponent<AudioSource>();
+        
+
     }
 
 
@@ -41,15 +49,17 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey("c"))
         {
             animator.SetBool(attackHash, true);
+
+            audioSource1.Play();
         }
 
         
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown("q"))
         {
-            //transform.Translate(Vector3.forward * 450 * Time.deltaTime * verticalInput);
+            transform.Translate(Vector3.forward * 200* Time.deltaTime * verticalInput);
 
-            ani.SetBool("Roll", true);
+            animator.SetBool("Roll", true);
         }
 
 

@@ -9,9 +9,14 @@ public class Colision : MonoBehaviour
     public bool haspowerUp;
     public GameObject[] powerupIndicator;
 
+    public ParticleSystem ParFlower;
+
+    
+
+
+
     private void Start()
     {
-       
     }
 
     private IEnumerator PowerupCountDown()
@@ -38,8 +43,9 @@ public class Colision : MonoBehaviour
 
             haspowerUp = true;
             StartCoroutine(PowerupCountDown());
-            
-            
+
+            ParFlower.Play();
+
             other.gameObject.SetActive(false);
             Debug.Log("EMPIEZA_POWERUP");
 
@@ -58,14 +64,16 @@ public class Colision : MonoBehaviour
            other.GetComponent<LifePlayer>().RestLife(damage);
            other.GetComponent<LifePlayer>().PlusLife(heal);
 
+            
+
 
         }
 
         if (other.gameObject.name.Contains("Dragon"))
         {
 
-            other.GetComponent<LifeEnemy>().RestLife(damage);
-            other.GetComponent<LifeEnemy>().PlusLife(heal);
+            other.GetComponent<Enemigo>().RestLife(damage);
+            other.GetComponent<Enemigo>().PlusLife(heal);
         }
 
 

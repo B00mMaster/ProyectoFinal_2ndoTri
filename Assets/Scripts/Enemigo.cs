@@ -13,10 +13,14 @@ public class Enemigo : MonoBehaviour
     public GameObject target;
     public bool atacando;
 
+    public AudioSource audioSource;
+
+
     private void Start()
     {
         ani= GetComponent<Animator>();
         target = GameObject.Find("Player");
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void EnemigoPatruya()
@@ -44,6 +48,7 @@ public class Enemigo : MonoBehaviour
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
                     transform.Translate(Vector3.forward * 1 * Time.deltaTime);
                     ani.SetBool("walk", true);
+                    audioSource.Play();
                     break;
             }
         }
@@ -81,15 +86,49 @@ public class Enemigo : MonoBehaviour
 
 
                 }
+                
 
             }
+            
         }
-
+        
         
     }
-    
+
+    public int life = 10;
+    private int maxLife = 10;
+
+
+
+    public void RestLife(int damage)
+    {
+        life -= damage;
+
+    }
+    public void PlusLife(int heal)
+    {
+        life += heal;
+        if (life >= maxLife)
+        {
+            life = maxLife;
+        }
+    }
     void Update()
     {
         EnemigoPatruya();
+
+        if (life <= 0)
+        {
+            ani.SetBool("die", true);
+            ani.SetBool("attack", false);
+            ani.SetBool("walk", false);
+            ani.SetBool("run", false);
+
+
+
+        }
+
     }
+
+
 }

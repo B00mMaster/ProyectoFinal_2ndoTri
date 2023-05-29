@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LifeEnemy : MonoBehaviour
 {
     public int life = 10;
     private int maxLife = 10;
-
     
+
 
     public void RestLife(int damage)
     {
@@ -23,11 +24,6 @@ public class LifeEnemy : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if(life<=0)
-        {
-            Destroy(gameObject);
-        }
-    }
+  
+
 }
