@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-
+    public static readonly int rollkHash = Animator.StringToHash("Roll");
     public static readonly int attackHash = Animator.StringToHash("Ataque");
     public static readonly int blendHash = Animator.StringToHash("Blend");
     public static readonly int velxHash = Animator.StringToHash("VelX");
     public static readonly int velyHash = Animator.StringToHash("VelY");
+
+    Animator ani;
 
     public float speed = 20f;
     public float rotSpeed = 10f;
@@ -41,12 +43,20 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool(attackHash, true);
         }
 
+        
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //transform.Translate(Vector3.forward * 450 * Time.deltaTime * verticalInput);
+
+            ani.SetBool("Roll", true);
+        }
 
 
     }
 
   
+
 
 
 

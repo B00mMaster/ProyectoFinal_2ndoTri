@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Esquivar : MonoBehaviour
 {
+    Animator ani;
     private bool shift;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && shift) 
         {
-            GetComponent<Animator>().SetTrigger("Esquive");
+            ani.SetBool("Roll", true);
             shift = false;
         }
 
