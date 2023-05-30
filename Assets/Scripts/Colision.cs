@@ -24,7 +24,7 @@ public class Colision : MonoBehaviour
         for (int i = 0; i < powerupIndicator.Length; i++)
         {
             powerupIndicator[i].SetActive(true);
-            damage = 10;
+            damage = 4;
             yield return new WaitForSeconds(20);
             Debug.Log("FINAL_POWERUP");
             powerupIndicator[i].SetActive(false);
@@ -44,7 +44,7 @@ public class Colision : MonoBehaviour
             haspowerUp = true;
             StartCoroutine(PowerupCountDown());
 
-            ParFlower.Play();
+            
 
             other.gameObject.SetActive(false);
             Debug.Log("EMPIEZA_POWERUP");

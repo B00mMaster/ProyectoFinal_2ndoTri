@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LifePlayer : MonoBehaviour
 {
-    public int life =10;
+    public int life = 10;
     private int maxLife = 10;
     private Animator animator;
     public Image barraVida;
@@ -20,7 +21,7 @@ public class LifePlayer : MonoBehaviour
     }
     public void RestLife(int damage)
     {
-        life-=damage;
+        life -= damage;
 
         hurtSource.Play();
 
@@ -31,26 +32,31 @@ public class LifePlayer : MonoBehaviour
         if (life >= maxLife)
         {
             life = maxLife;
-        } 
+        }
     }
     private void Update()
     {
-        barraVida.fillAmount =(float)life/maxLife;
+        barraVida.fillAmount = (float)life / maxLife;
 
-        if(life==0)
-        {
-            animator.Play("");
-        }
+        IsGameOver("GAME OVER");
+
     }
 
-    
+
     public void ResetAttack()
     {
         animator.SetBool(PlayerControl.attackHash, false);
     }
 
 
+    public void IsGameOver(string name3)
+    {
+        if (life <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
 
 
 
+    }
 }

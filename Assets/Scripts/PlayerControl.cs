@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     public static readonly int velxHash = Animator.StringToHash("VelX");
     public static readonly int velyHash = Animator.StringToHash("VelY");
 
+    [SerializeField]private ParticleSystem particulas;
+
     Animator ani;
 
     public AudioSource swingSwordSource;
@@ -61,9 +63,13 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown("q"))
         {
             transform.Translate(Vector3.forward * 200* Time.deltaTime * verticalInput);
+
+            particulas.Play();
+
+
             //rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
-            rollingInTheDeep = true;
-            animator.SetBool("Roll", true);
+           // rollingInTheDeep = true;
+          //  animator.SetBool("Roll", true);
         }
 
 
@@ -74,8 +80,8 @@ public class PlayerControl : MonoBehaviour
     public void ResetRoll()
     {
         //rigidbody.constraints = RigidbodyConstraints.None;
-        rollingInTheDeep = false;
-        animator.SetBool(rollkHash, false);
+        //rollingInTheDeep = false;
+      //  animator.SetBool(rollkHash, false);
     }
 
 
