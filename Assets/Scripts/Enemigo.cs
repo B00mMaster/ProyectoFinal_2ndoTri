@@ -25,6 +25,8 @@ public class Enemigo : MonoBehaviour
 
     public void EnemigoPatruya()
     {
+        //if està mort { res}
+        ////if(!estàmort {
         if (Vector3.Distance(transform.position, target.transform.position) > 20)
         {
             ani.SetBool("run", false);
@@ -83,7 +85,7 @@ public class Enemigo : MonoBehaviour
 
                     ani.SetBool("attack", true);
 
-
+                        
 
                 }
                 
@@ -93,6 +95,17 @@ public class Enemigo : MonoBehaviour
         }
         
         
+    }
+
+    private void isDead()
+    {
+        if (life <= 0)//if is death
+        {
+        }
+        else //if is alive
+        {
+            EnemigoPatruya();
+        }
     }
 
     public int life = 10;
@@ -115,7 +128,7 @@ public class Enemigo : MonoBehaviour
     }
     void Update()
     {
-        EnemigoPatruya();
+        isDead();
 
         if (life <= 0)
         {
@@ -124,10 +137,9 @@ public class Enemigo : MonoBehaviour
             ani.SetBool("walk", false);
             ani.SetBool("run", false);
 
-
-
         }
 
+        
     }
 
 

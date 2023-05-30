@@ -12,8 +12,8 @@ public class PlayerControl : MonoBehaviour
 
     Animator ani;
 
-    public AudioSource audioSource1;
-    
+    public AudioSource swingSwordSource;
+
 
 
     public float speed = 20f;
@@ -21,12 +21,15 @@ public class PlayerControl : MonoBehaviour
     public float horizontalInput, verticalInput;
    
     private Animator animator;
+
+    private Rigidbody rigidbody;
+
+    private bool rollingInTheDeep;
    
     private void Start()
     {
         animator = GetComponent<Animator>();
-
-        audioSource1 = GetComponent<AudioSource>();
+        rigidbody = GetComponent<Rigidbody>();
         
 
     }
@@ -35,7 +38,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-
+        if(rollingInTheDeep) return;
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -50,7 +53,7 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetBool(attackHash, true);
 
-            audioSource1.Play();
+            swingSwordSource.Play();
         }
 
         
@@ -58,16 +61,22 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown("q"))
         {
             transform.Translate(Vector3.forward * 200* Time.deltaTime * verticalInput);
-
+            //rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+            rollingInTheDeep = true;
             animator.SetBool("Roll", true);
         }
 
 
     }
 
-  
 
 
+    public void ResetRoll()
+    {
+        //rigidbody.constraints = RigidbodyConstraints.None;
+        rollingInTheDeep = false;
+        animator.SetBool(rollkHash, false);
+    }
 
 
 

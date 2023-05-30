@@ -10,20 +10,19 @@ public class LifePlayer : MonoBehaviour
     private Animator animator;
     public Image barraVida;
 
-    public AudioSource audioSource2;
+    public AudioSource hurtSource;
 
 
     private void Start()
     {
         animator = GetComponent<Animator>();
 
-        audioSource2 = GetComponent<AudioSource>();
     }
     public void RestLife(int damage)
     {
         life-=damage;
 
-        audioSource2.Play();
+        hurtSource.Play();
 
     }
     public void PlusLife(int heal)
@@ -50,10 +49,7 @@ public class LifePlayer : MonoBehaviour
         animator.SetBool(PlayerControl.attackHash, false);
     }
 
-    public void ResetRoll()
-    {
-        animator.SetBool(PlayerControl.rollkHash, false);
-    }
+
 
 
 
