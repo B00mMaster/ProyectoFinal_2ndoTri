@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemigo : MonoBehaviour
 {
@@ -136,11 +137,21 @@ public class Enemigo : MonoBehaviour
             ani.SetBool("attack", false);
             ani.SetBool("walk", false);
             ani.SetBool("run", false);
+            
 
         }
 
+      
+    }
+    public void Destroy()
+    {
+        Destroy(gameObject);
+
         
+
     }
 
 
+
 }
+

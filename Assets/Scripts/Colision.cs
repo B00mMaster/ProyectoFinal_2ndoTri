@@ -54,14 +54,15 @@ public class Colision : MonoBehaviour
         }
         if (other.gameObject.name.Contains("Grass"))
         {
+            
             other.gameObject.SetActive(false);
 
         }
 
         if (other.gameObject.name.Contains("Player"))
         {
-            
-           other.GetComponent<LifePlayer>().RestLife(damage);
+            other.GetComponent<LifePlayer>().PlusLife(heal);
+            other.GetComponent<LifePlayer>().RestLife(damage);
             
         }
 

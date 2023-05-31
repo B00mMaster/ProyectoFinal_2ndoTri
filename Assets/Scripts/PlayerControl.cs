@@ -67,9 +67,9 @@ public class PlayerControl : MonoBehaviour
             particulas.Play();
 
 
-            //rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
-           // rollingInTheDeep = true;
-          //  animator.SetBool("Roll", true);
+            
+           
+            animator.SetBool("Roll", true);
         }
 
 
@@ -79,9 +79,9 @@ public class PlayerControl : MonoBehaviour
 
     public void ResetRoll()
     {
-        //rigidbody.constraints = RigidbodyConstraints.None;
-        //rollingInTheDeep = false;
-      //  animator.SetBool(rollkHash, false);
+        
+        
+        animator.SetBool("Roll", false);
     }
 
 
