@@ -9,6 +9,11 @@ public class ColisionPlanta : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<LifePlayer>().PlusLife(heal);
+        if (other.gameObject.name.Contains("Player"))
+        {
+            other.GetComponent<LifePlayer>().PlusLife(heal);
+            
+
+        }
     }
 }

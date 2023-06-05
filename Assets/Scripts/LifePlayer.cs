@@ -10,6 +10,7 @@ public class LifePlayer : MonoBehaviour
     private int maxLife = 10;
     private Animator animator;
     public Image barraVida;
+    public static readonly int rollkHash = Animator.StringToHash("Roll");
 
     public AudioSource hurtSource;
 
@@ -22,6 +23,7 @@ public class LifePlayer : MonoBehaviour
     public void RestLife(int damage)
     {
         life -= damage;
+        animator.SetBool(rollkHash, true);
 
         hurtSource.Play();
 
@@ -53,6 +55,7 @@ public class LifePlayer : MonoBehaviour
     {
         if (life <= 0)
         {
+            
             SceneManager.LoadScene(2);
         }
 

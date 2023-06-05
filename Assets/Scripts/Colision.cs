@@ -9,7 +9,7 @@ public class Colision : MonoBehaviour
     public bool haspowerUp;
     public GameObject[] powerupIndicator;
 
-    public ParticleSystem ParFlower;
+    public ParticleSystem powerUp;
 
     
 
@@ -30,6 +30,7 @@ public class Colision : MonoBehaviour
             powerupIndicator[i].SetActive(false);
             damage = 1;
             haspowerUp = false;
+            powerUp.Stop();
         }
         
         
@@ -49,7 +50,7 @@ public class Colision : MonoBehaviour
             other.gameObject.SetActive(false);
             Debug.Log("EMPIEZA_POWERUP");
 
-
+            powerUp.Play();
 
         }
         if (other.gameObject.name.Contains("Grass"))

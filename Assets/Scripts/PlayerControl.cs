@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public static readonly int rollkHash = Animator.StringToHash("Roll");
+   
     public static readonly int attackHash = Animator.StringToHash("Ataque");
     public static readonly int blendHash = Animator.StringToHash("Blend");
     public static readonly int velxHash = Animator.StringToHash("VelX");
@@ -60,17 +60,6 @@ public class PlayerControl : MonoBehaviour
 
         
 
-        if (Input.GetKeyDown("q"))
-        {
-            transform.Translate(Vector3.forward * 200* Time.deltaTime * verticalInput);
-
-            particulas.Play();
-
-
-            
-           
-            animator.SetBool("Roll", true);
-        }
 
 
     }
