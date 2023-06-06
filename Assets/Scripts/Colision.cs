@@ -11,12 +11,13 @@ public class Colision : MonoBehaviour
 
     public ParticleSystem powerUp;
 
-    
 
 
+   
 
     private void Start()
     {
+        powerUp.gameObject.SetActive(false);
     }
 
     private IEnumerator PowerupCountDown()
@@ -30,6 +31,7 @@ public class Colision : MonoBehaviour
             powerupIndicator[i].SetActive(false);
             damage = 1;
             haspowerUp = false;
+            powerUp.gameObject.SetActive(false);
             powerUp.Stop();
         }
         
@@ -45,14 +47,15 @@ public class Colision : MonoBehaviour
             haspowerUp = true;
             StartCoroutine(PowerupCountDown());
 
-            
 
-            other.gameObject.SetActive(false);
+
+            Destroy(other.gameObject);
             Debug.Log("EMPIEZA_POWERUP");
-
+            powerUp.gameObject.SetActive(true);
             powerUp.Play();
 
         }
+
         if (other.gameObject.name.Contains("Grass"))
         {
             
@@ -67,13 +70,7 @@ public class Colision : MonoBehaviour
             
         }
 
-        if (other.gameObject.name.Contains("Dragon"))
-        {
-
-            other.GetComponent<Enemigo>().RestLife(damage);
-            other.GetComponent<Enemigo>().PlusLife(heal);
-        }
-
+        
 
 
     }

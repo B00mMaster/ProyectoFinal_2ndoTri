@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
 
     private bool isPaused = false;
+
+
+    
+
+    private void Start()
+    {
+        pausePanel.gameObject.SetActive(false);
+    }
 
     private void Update()
     {

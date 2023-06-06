@@ -11,6 +11,8 @@ public class Enemigo : MonoBehaviour
     public Quaternion angulo;
     public float grado;
 
+    public int damage;
+
     public GameObject target;
     public bool atacando;
 
@@ -19,7 +21,7 @@ public class Enemigo : MonoBehaviour
 
     private void Start()
     {
-        ani= GetComponent<Animator>();
+        ani = GetComponent<Animator>();
         target = GameObject.Find("Player");
         audioSource = GetComponent<AudioSource>();
     }
@@ -37,7 +39,7 @@ public class Enemigo : MonoBehaviour
                 rutina = Random.Range(0, 2);
                 crono = 0;
             }
-            switch (rutina) 
+            switch (rutina)
             {
                 case 0:
                     ani.SetBool("walk", false);
@@ -57,21 +59,21 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
-            
-            if (Vector3.Distance(transform.position, target.transform.position)>4 && !atacando)
+
+            if (Vector3.Distance(transform.position, target.transform.position) > 4 && !atacando)
             {
                 var lookPos = target.transform.position - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
                 ani.SetBool("walk", false);
-               
+
                 ani.SetBool("run", true);
                 transform.Translate(Vector3.forward * 4 * Time.deltaTime);
 
                 ani.SetBool("attack", false);
             }
-            else 
+            else
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > 1 && !atacando)
                 {
@@ -86,16 +88,16 @@ public class Enemigo : MonoBehaviour
 
                     ani.SetBool("attack", true);
 
-                        
+
 
                 }
-                
+
 
             }
-            
+
         }
-        
-        
+
+
     }
 
     private void isDead()
@@ -137,21 +139,31 @@ public class Enemigo : MonoBehaviour
             ani.SetBool("attack", false);
             ani.SetBool("walk", false);
             ani.SetBool("run", false);
-            
+
 
         }
 
-      
+
     }
     public void Destroy()
     {
         Destroy(gameObject);
 
-        
+
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Contains("Dragon"))
+        {
+
+            other.GetComponent<Enemigo>().RestLife(damage);
 
 
+        }
+
+
+    }
 }
 

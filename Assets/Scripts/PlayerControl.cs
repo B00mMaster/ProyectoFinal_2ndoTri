@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControl : MonoBehaviour
 {
    
@@ -27,7 +28,10 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody rigidbody;
 
     private bool rollingInTheDeep;
+
    
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
