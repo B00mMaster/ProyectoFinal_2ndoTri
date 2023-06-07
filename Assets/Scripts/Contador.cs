@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Contador : MonoBehaviour
 {
-    public TextMeshProUGUI  textoContador;
+    public TextMeshProUGUI textoContador;
 
-    private float tiempoRest=3000;
+    private float tiempoRest = 3000;
 
     private bool isCont = false;
 
@@ -17,7 +17,7 @@ public class Contador : MonoBehaviour
 
     private void Update()
     {
-        if(tiempoRest>0)
+        if (tiempoRest > 0)
         {
             tiempoRest -= Time.deltaTime;
             MostrarTiempo();
@@ -49,13 +49,13 @@ public class Contador : MonoBehaviour
     void ResumeGame()
     {
         isCont = false;
-        
+
         contPanel.SetActive(false);
     }
     void ContGame()
     {
         isCont = true;
-        
+
         contPanel.SetActive(true);
     }
 }

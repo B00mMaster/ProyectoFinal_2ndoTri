@@ -13,11 +13,11 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField]private ParticleSystem particulas;
 
-    Animator ani;
+    
 
     public AudioSource swingSwordSource;
 
-
+    public Transform respawn;
 
     public float speed = 20f;
     public float rotSpeed = 10f;
@@ -25,17 +25,17 @@ public class PlayerControl : MonoBehaviour
    
     private Animator animator;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     private bool rollingInTheDeep;
 
-   
+    Vector3 posInicio;
 
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         
 
     }
@@ -62,7 +62,11 @@ public class PlayerControl : MonoBehaviour
             swingSwordSource.Play();
         }
 
-        
+        if (transform.position.y < -6)
+        {
+            transform.position = posInicio;
+            transform.position = respawn.position;
+        }
 
 
 

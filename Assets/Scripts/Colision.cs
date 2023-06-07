@@ -70,7 +70,13 @@ public class Colision : MonoBehaviour
             
         }
 
-        
+        if (other.gameObject.name.Contains("Dragon"))
+        {
+
+            other.GetComponent<Enemigo>().RestLife(damage);
+
+
+        }
 
 
     }

@@ -26,7 +26,7 @@ public class NumDrag : MonoBehaviour
         }
         if(allDragDead)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);
         }
     }
 

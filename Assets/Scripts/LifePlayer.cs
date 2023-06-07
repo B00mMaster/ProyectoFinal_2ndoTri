@@ -56,7 +56,7 @@ public class LifePlayer : MonoBehaviour
         if (life <= 0)
         {
             
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
 
 

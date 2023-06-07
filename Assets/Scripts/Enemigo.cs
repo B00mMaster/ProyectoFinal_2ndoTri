@@ -28,9 +28,8 @@ public class Enemigo : MonoBehaviour
 
     public void EnemigoPatruya()
     {
-        //if està mort { res}
-        ////if(!estàmort {
-        if (Vector3.Distance(transform.position, target.transform.position) > 20)
+       
+        if (Vector3.Distance(transform.position, target.transform.position) > 30)
         {
             ani.SetBool("run", false);
             crono += 1 * Time.deltaTime;
@@ -69,7 +68,7 @@ public class Enemigo : MonoBehaviour
                 ani.SetBool("walk", false);
 
                 ani.SetBool("run", true);
-                transform.Translate(Vector3.forward * 4 * Time.deltaTime);
+                transform.Translate(Vector3.forward * 5 * Time.deltaTime);
 
                 ani.SetBool("attack", false);
             }
@@ -153,17 +152,6 @@ public class Enemigo : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name.Contains("Dragon"))
-        {
-
-            other.GetComponent<Enemigo>().RestLife(damage);
-
-
-        }
-
-
-    }
+    
 }
 
